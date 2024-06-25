@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="/output.css" rel="stylesheet">
+</head>
+<body class="text-black p-0 m-0">
+    <header class="bg-slate-600 m-0 p-3 flex justify-between items-center">
+        <h1 class="text-white text-3xl uppercase text-left font-semibold">expense tracker</h1>
+        <p class="text-sm text-white">made by <span class="text-xl font-extrabold">Dev Karan</span></p>
+    </header>
+    <main class="text-white bg-black p-3 text-lg" >
+        <div class="w-full m-auto border-dashed border-2">
+            <div class=" flex justify-around">
+                <h1 class="inline w-1/12 text-center border-dashed border-r-2">sr.</h1>
+                <h1 class="inline w-5/12 text-center border-dashed border-r-2">Description</h1>
+                <h1 class="inline w-3/12 text-center border-dashed border-r-2">Amount</h1>
+                <h1 class="inline w-3/12 text-center">Category</h1>
+            </div>
+            <% expenses.forEach((expense, index) => { %>
+            <a href="https://example.com" class="block">
+                <div class="flex justify-around">
+                    <h1 class="inline w-1/12 text-center border-dashed border-r-2"><%= index + 1 %></h1>
+                    <h1 class="inline w-5/12 text-center border-dashed border-r-2"><%= expense.description %></h1>
+                    <h1 class="inline w-3/12 text-center border-dashed border-r-2"><%= expense.amount %></h1>
+                    <h1 class="inline w-3/12 text-center"><%= expense.category %></h1>
+                </div>
+            </a>
+            <% }); %>
+            
+            <div class="flex justify-between border-dashed border-t-2">
+                <h1 class="inline w-6/12"></h1>
+                <h1 class="inline w-3/12 text-center text-red-600 font-extrabold text-2xl"><%= totalAmount %></h1>
+                <h1 class="inline w-3/12 text-center text-red-600 text-2xl">Total</h1>
+            </div>
+        </div>
+    </main>
+    <div class="w-max h-10 p-3 bg-red-600 rounded-full flex justify-center items-center fixed bottom-5 right-5" >
+        <h1 class="text-xl text-white font-bold w-full">
+            <a href=""> Add An Expense </a>
+        </h1>
+    </div>
+</body>
+</html>
