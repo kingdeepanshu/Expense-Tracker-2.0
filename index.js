@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const path = require('path');
 const app = express();
 
+
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -27,6 +28,7 @@ mongoose.connect("mongodb+srv://DevKaran:devkaran@devcluster.pgch4da.mongodb.net
 const schema = mongoose.Schema({
     description: String,
     amount: Number,
+    date: Date,
     category: String
 })
 
@@ -56,34 +58,33 @@ app.get("/", async (req, res) => {
         console.log(err);
         res.status(500).send("An error occurred");
     }
-});
+}); 
 
 // to get add page
 app.get("/add", async(req, res) => {
-    res.send("add expense page showing")
+    res.render('add');
 })
 app.post("/add", async(req, res) => {
     const expenses = new Expense(req.body);
     await expenses.save();
-    res.status(200).send("saved");
+    res.status(200).redirect('/');
 })
 
 // edit page
 app.get("/:id", async(req, res) => {
     const expenses = await Expense.findById(req.params.id);
-    res.status(200).json(expenses);
+    res.render('edit', { expenses });
 })
-app.put("/edit/:id", async(req, res) => {
-    await Expense.findByIdAndUpdate(req.params.id);
+app.put("/:id", async(req, res) => {
+    await Expense.findByIdAndUpdate(req.params.id, req.body,{ new: true, runValidators: true });
+    res.status(200).redirect('/');
 })
 
 // deletebyid
 app.delete("/:id", async(req, res) => {
     await Expense.findByIdAndDelete(req.params.id);
-    res.status(200).send("deleted")
+    res.status(200).redirect('/');
 })
-
-
 
 
 app.listen(3000, () => {

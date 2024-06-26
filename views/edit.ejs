@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= expenses.description %></title>
+    <link href="/output.css" rel="stylesheet">
+
+<% function formatDate(date) {
+    if (!date) return ''; // Handle cases where date is not available
+    const formattedDate = new Date(date);
+    const year = formattedDate.getFullYear();
+    const month = (formattedDate.getMonth() + 1).toString().padStart(2, '0'); // Month is 0-based, so we add 1
+    const day = formattedDate.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+} %>
+
+
+</head>
+<body class="text-black p-0 m-0">
+    <header class="bg-slate-600 m-0 p-2 flex justify-between items-center">
+        <h1 class="text-white text-xl capitalize text-left font-semibold"><a href="/">expense <br> tracker</a></h1>
+        <div class="flex flex-row sm:flex-col">
+        <h1 class="text-xs text-white">made by </p>
+            <span class="text-sm font-extrabold">Dev Karan</span>
+        </div>
+    </header>
+
+    <div>
+        <form action="/<%= expenses._id %>/?_method=PUT" method="POST" class="w-full p-3">
+            <div>
+                <h1 class="w-4/5 capitalize text-xl">description</h1>
+                <input type="text" name="description" class="inline w-full border-2 text-4xl border-black mb-5 capitalize placeholder:capitalize overflow-hidden" value="<%= expenses.description %>" required>
+
+                <h1 class="w-4/5 capitalize text-xl">amount</h1>
+                <input type="number" name="amount" class="inline w-full border-2 text-4xl border-black mb-5" placeholder="<%= expenses.amount %>" value="<%= expenses.amount %>" required>
+
+                <h1 class="w-4/5 capitalize text-xl">date</h1>
+                <input type="date" name="date" class="inline border-2 text-2xl border-black mb-5" required placeholder="YYYY-MM-DD" id="dateInput" value="<%= formatDate(expenses.date) %>">
+
+                <h1 class="w-4/5 capitalize text-xl">category</h1>
+                <select name="category" id="" class="inline w-1/2 border-2 text-2xl border-black mb-5" required>
+                    <option value="Food" class="capitalize">Food</option>
+                    <option value="Travel" class="capitalize">Travel</option>
+                    <option value="Grocery" class="capitalize">Grocery</option>
+                    <option value="Personal" class="capitalize">Personal</option>
+                    <option value="Flat" class="capitalize">Flat</option>
+                </select>
+
+            </div>
+            <button type="submit" class="text-2xl rounded-full p-2 bg-red-600 text-white">Edit and Save</button>
+        </form>
+        <form action="/<%= expenses._id %>?_method=DELETE" method="POST" class="px-3">
+            <button type="submit" class="text-2xl rounded-full p-2 bg-green-600 text-white">Delete</button>
+        </form>
+    </div>
+</body>
+</html>
