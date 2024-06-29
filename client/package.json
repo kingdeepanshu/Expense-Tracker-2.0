@@ -53,5 +53,5 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "proxy": "https://expense-tracker-2-0-gamma.vercel.app/"
+  "proxy": "https://expense-tracker-2-0-one.vercel.app/"
 }
