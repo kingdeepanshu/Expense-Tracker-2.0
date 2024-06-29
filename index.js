@@ -61,6 +61,10 @@ lastDayOfPreviousMonth.setDate(firstDayOfCurrentMonth.getDate() - 1);
 let firstDayOfPreviousMonth = new Date(lastDayOfPreviousMonth.getFullYear(), lastDayOfPreviousMonth.getMonth(), 1);
 
 
+app.get("/", async (req, res) => {
+    const expenses = await Expense.find().sort({ createdAt: -1 })
+    res.json(expenses);
+}); 
 
 
 // homepage
