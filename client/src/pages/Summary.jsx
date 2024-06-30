@@ -9,6 +9,7 @@ import TravelGraph from '../components/TravelGraph';
 import PersonalGraph from '../components/PersonalGraph';
 import GroceryGraph from '../components/GroceryGraph';
 import FlatGraph from '../components/FlatGraph';
+import NavbarMobile from '../components/NavbarMobile';
 
 function Summary() {
   const [selection, SetSelection] = useState('This Month');
@@ -101,7 +102,7 @@ function formatDate(date) {
 
   return (
 <body className="w-full flex relative p-5 bg-indigo-600 m-0 min-h-screen">
-
+<NavbarMobile/>
 <Navbar/>
 
 <div className="w-full p-8 bg-white rounded-2xl ">
