@@ -17,7 +17,7 @@ function AddExpense() {
             <AddForm/>
 
         </div>
-        <div className='w-3/12'>
+        <div className='w-3/12 sm:w-0'>
         </div>
 </body>
   )

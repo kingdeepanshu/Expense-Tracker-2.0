@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function AddForm() {
   const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Uncategorized');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [added, setAdded] = useState(false)
