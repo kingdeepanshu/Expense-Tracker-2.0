@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../profilepic.png'
 
 function Header({onChange, defaultSelection}) {
 
@@ -30,7 +31,7 @@ function Header({onChange, defaultSelection}) {
             <h1 className="text-gray-700 text-left">{today.getDate()} {monthName}, {today.getFullYear()}</h1>
         </div>
         <div className="sm:w-3/6 w-72 flex justify-around items-center">
-            <img src="../profilepic.png" alt="" className="w-16 h-16  rounded-full object-cover border-2 border-indigo-600 sm:w-9 sm:h-9 sm:hidden" />
+            <img src={logo} alt="" className="w-16 h-16  rounded-full object-cover border-2 border-indigo-600 sm:w-9 sm:h-9 sm:hidden" />
             <div className="flex flex-col justify-center">
                 <h1 className="text-lg text-indigo-600 font-bold sm:text-sm">Dev KARAN</h1>
                 <h1 className="text-sm text-gray-600 sm:text-xs">king.deepanshu24@gmail.com</h1>

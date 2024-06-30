@@ -81,7 +81,7 @@ function Home() {
     console.log(expenses);
 
   return (
-<div className="min-h-screen  w-full flex relative p-5 bg-indigo-600 m-0 sm:flex-col">
+<div className="min-h-screen  w-full flex relative sm:p-2 p-5 bg-indigo-600 m-0 sm:flex-col">
         <NavbarMobile/>
         <Navbar/>
 
@@ -132,7 +132,7 @@ function Home() {
                             <img src="https://www.qfc.com/content/v2/binary/image/bl/health/what-is-healthy-food/what-is-healthy-food--3616981_2022_dx_content_kh_whatishealthyfood_hro_mbl_640x364.jpg" alt="" className="w-16 h-16 rounded-full object-cover mr-6"/>
                             <div className="flex flex-col justify-center">
                                 <h1 className="text-2xl">{expense.description}</h1>
-                                <div className="flex text-gray-600">
+                                <div className="flex text-gray-600 sm:flex-col sm:items-start md:flex-col md:items-start">
                                     <h1 className="mr-5">{formatDate(expense.date)}</h1>
                                     <h1>{expense.category}</h1>
                                 </div>
