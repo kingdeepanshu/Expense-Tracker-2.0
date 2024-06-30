@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
-import MonthGraph from '../components/MonthGraph';
+// import MonthGraph from '../components/MonthGraph';
 import FoodGraph from '../components/FoodGraph';
 import ThisWeekGraph from '../components/ThisWeekGraph';
 import { Link } from 'react-router-dom';
@@ -95,7 +95,7 @@ function Home() {
                             <h1 className="text-xl text-left font-bold">₹{totalcat(monthex)}</h1>
                         </div>
                         <div className='w-full flex justify-center items-center overflow-hidden'>
-                        <MonthGraph/>
+                        {/* <MonthGraph/> */}
                         </div>
                     </div>
                     <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80">

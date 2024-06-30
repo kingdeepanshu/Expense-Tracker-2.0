@@ -4,7 +4,6 @@ import Header from '../components/Header'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AddButton from '../components/AddButton';
-import MonthGraph from '../components/MonthGraph';
 
 function Expenses() {
 
@@ -53,7 +52,7 @@ function formatDate(date) {
   <div className="mt-8">
     <h1 className="w-44 text-left text-3xl">Expenses</h1>
     <div className='w-1/2 sm:w-full'>
-      <MonthGraph/>
+      {/* <MonthGraph/> */}
     </div>
 
     <div>

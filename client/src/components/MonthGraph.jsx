@@ -10,10 +10,10 @@ function MonthGraph() {
     })
   })
 
-  const data = expenses.map(expense => expense.amount);
+  const data = expenses.forEach(expense => expense.amount);
 
 
-  const date = expenses.map(expense => (
+  const date = expenses.forEach(expense => (
     new Date(expense.date).getDate()
   ))
 
