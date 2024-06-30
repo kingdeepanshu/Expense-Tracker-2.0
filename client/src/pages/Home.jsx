@@ -77,6 +77,8 @@ function Home() {
         return `${day} ${monthName}`;
     }
 
+    console.log(expenses);
+
   return (
 <body className="min-h-screen  w-full flex relative p-5 bg-indigo-600 m-0">
         
