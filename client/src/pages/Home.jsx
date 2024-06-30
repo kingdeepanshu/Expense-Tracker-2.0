@@ -7,6 +7,7 @@ import ThisWeekGraph from '../components/ThisWeekGraph';
 import { Link } from 'react-router-dom';
 import AddButton from '../components/AddButton';
 import NavbarMobile from '../components/NavbarMobile';
+import CategoryChart from '../components/CategoryChart'
 
 function Home() {
     const [selection, SetSelection] = useState('Today');
@@ -29,6 +30,8 @@ function Home() {
         }else if(selection === 'This Month'){
             link = 'https://expense-tracker-2-0-one.vercel.app/month';
         }else if(selection === 'Last Month'){
+            link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
+        }else if(selection === 'Total'){
             link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
         }else{
             link = 'https://expense-tracker-2-0-one.vercel.app/today';
@@ -71,8 +74,8 @@ function Home() {
         const day = formattedDate.getDate().toString().padStart(2, '0');
         const monthIndex = formattedDate.getMonth(); // Note: getMonth() returns 0-based index
         const monthNames = [
-            'January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ];
         const monthName = monthNames[monthIndex];
         return `${day} ${monthName}`;
@@ -90,9 +93,12 @@ function Home() {
             <Header onChange={handleSelection} defaultSelection="Today" />
             <div className="mt-8">
                 <h1 className="w-44 text-left text-3xl">DashBoard</h1>
+                <div className='w-full m-auto mt-2'>
+                    <CategoryChart/>
+                </div>
                 <div className="flex flex-wrap justify-between m-auto mt-6 sm:flex-col sm:justify-center sm:items-center md:flex-col md:justify-center md:items-center">
                     
-                    <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80">
+                    <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-fit 2xl:w-80 2xl:h-80 sm:hidden">
                         <div>
                             <h1 className="text-2xl text-left text-gray-600">This Month</h1>
                             <h1 className="text-xl text-left font-bold">₹{totalcat(monthex)}</h1>
@@ -101,7 +107,7 @@ function Home() {
                         <MonthGraph/>
                         </div>
                     </div>
-                    <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80">
+                    <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80 sm:hidden">
                         <div>
                             <h1 className="text-2xl text-left text-gray-600">This Week</h1>
                             <h1 className="text-xl text-left font-bold">₹{totalcat(weekex)}</h1>
@@ -110,7 +116,7 @@ function Home() {
                         <ThisWeekGraph/>
                         </div>
                     </div>
-                    <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80">
+                    <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80 sm:hidden">
                         <div>
                             <h1 className="text-2xl text-left text-gray-600">Food</h1>
                             <h1 className="text-xl text-left font-bold">₹{totalcat(foodex)}</h1>
@@ -131,15 +137,15 @@ function Home() {
                         <div className="flex" key={expense._id}>
                             <img src="https://www.qfc.com/content/v2/binary/image/bl/health/what-is-healthy-food/what-is-healthy-food--3616981_2022_dx_content_kh_whatishealthyfood_hro_mbl_640x364.jpg" alt="" className="w-16 h-16 rounded-full object-cover mr-6"/>
                             <div className="flex flex-col justify-center">
-                                <h1 className="text-2xl">{expense.description}</h1>
+                                <h1 className="text-2xl sm:text-lg">{expense.description}</h1>
                                 <div className="flex text-gray-600 sm:flex-col sm:items-start md:flex-col md:items-start">
                                     <h1 className="mr-5">{formatDate(expense.date)}</h1>
-                                    <h1>{expense.category}</h1>
+                                    <h1 className='sm:text-sm'>{expense.category}</h1>
                                 </div>
                             </div>
                         </div>
                         
-                        <h1 className="flex items-center justify-center text-2xl font-bold">₹{expense.amount}</h1>
+                        <h1 className="flex items-center justify-center text-2xl font-bold sm:text-xl">₹{expense.amount}</h1>
                     </div>
                     </Link>
                     ))}

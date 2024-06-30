@@ -18,9 +18,9 @@ function Header({onChange, defaultSelection}) {
   return (
     <div className="flex justify-between">
         <div className="w-44 flex flex-col justify-center">
-            <div className="flex justify-start mb-2 sm:mb-1">
-                <h1 className="">Sort: </h1>
-                <select name="" id="" onChange={(event) => onChange(event.target.value)} defaultValue={defaultSelection} className='text-center'>
+            <div className="flex justify-start items-start mb-2 sm:mb-1">
+                <h1 className="sm:hidden">Sort: </h1>
+                <select name="" id="" onChange={(event) => onChange(event.target.value)} defaultValue={defaultSelection} className='text-center sm:text-left'>
                     <option value="Total">Total</option>
                     <option value="Today">Today</option>
                     <option value="This Week">This Week</option>
