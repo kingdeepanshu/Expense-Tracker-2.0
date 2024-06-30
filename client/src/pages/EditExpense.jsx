@@ -5,7 +5,7 @@ import EditForm from '../components/EditForm';
 function EditExpense() {
 
   return (
-<body className="min-h-screen  w-full flex relative p-5 bg-indigo-600 m-0">
+<body className="min-h-screen w-full flex relative p-5 bg-indigo-600 m-0">
         <Navbar/>
         <div className="w-full p-8 bg-white rounded-2xl border-2">
             
