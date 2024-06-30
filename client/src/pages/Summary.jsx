@@ -3,6 +3,12 @@ import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import AddButton from '../components/AddButton';
 import { Link } from 'react-router-dom';
+import TotalGraph from '../components/TotalGraph';
+import FoodGraph from '../components/FoodGraph';
+import TravelGraph from '../components/TravelGraph';
+import PersonalGraph from '../components/PersonalGraph';
+import GroceryGraph from '../components/GroceryGraph';
+import FlatGraph from '../components/FlatGraph';
 
 function Summary() {
   const [selection, SetSelection] = useState('This Month');
@@ -110,7 +116,7 @@ function formatDate(date) {
           <h1 className="text-xl text-left font-bold">₹{totalcat(Totalex)}</h1>
         </div>
         <div className="border-2 w-full">
-          <img src="https://marketplace.canva.com/EAFYZYCiOWE/1/0/1600w/canva-blue-modern-line-bar-chart-graph-nMDI5HfVPvo.jpg" alt="" className="w-full h-full object-cover"/>
+          <TotalGraph/>
         </div>
       </div>
 
@@ -121,7 +127,7 @@ function formatDate(date) {
           <h1 className="text-xl text-left font-bold">₹{totalcat(foodex)}</h1>
         </div>
         <div className="border-2 w-full">
-          <img src="https://marketplace.canva.com/EAFYZYCiOWE/1/0/1600w/canva-blue-modern-line-bar-chart-graph-nMDI5HfVPvo.jpg" alt="" className="w-full h-full object-cover"/>
+          <FoodGraph/>
         </div>
       </div>
 
@@ -131,7 +137,7 @@ function formatDate(date) {
           <h1 className="text-xl text-left font-bold">₹{totalcat(travelex)}</h1>
         </div>
         <div className="border-2 w-full">
-          <img src="https://marketplace.canva.com/EAFYZYCiOWE/1/0/1600w/canva-blue-modern-line-bar-chart-graph-nMDI5HfVPvo.jpg" alt="" className="w-full h-full object-cover"/>
+          <TravelGraph/>
         </div>
       </div>
       <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80">
@@ -140,7 +146,7 @@ function formatDate(date) {
           <h1 className="text-xl text-left font-bold">₹{totalcat(personalex)}</h1>
         </div>
         <div className="border-2 w-full">
-          <img src="https://marketplace.canva.com/EAFYZYCiOWE/1/0/1600w/canva-blue-modern-line-bar-chart-graph-nMDI5HfVPvo.jpg" alt="" className="w-full h-full object-cover"/>
+          <PersonalGraph/>
         </div>
       </div>
 
@@ -150,7 +156,7 @@ function formatDate(date) {
           <h1 className="text-xl text-left font-bold">₹{totalcat(groceryex)}</h1>
         </div>
         <div className="border-2 w-full">
-          <img src="https://marketplace.canva.com/EAFYZYCiOWE/1/0/1600w/canva-blue-modern-line-bar-chart-graph-nMDI5HfVPvo.jpg" alt="" className="w-full h-full object-cover"/>
+          <GroceryGraph/>
         </div>
       </div>
 
@@ -160,7 +166,7 @@ function formatDate(date) {
           <h1 className="text-xl text-left font-bold">₹{totalcat(flatex)}</h1>
         </div>
         <div className="border-2 w-full">
-          <img src="https://marketplace.canva.com/EAFYZYCiOWE/1/0/1600w/canva-blue-modern-line-bar-chart-graph-nMDI5HfVPvo.jpg" alt="" className="w-full h-full object-cover"/>
+          <FlatGraph/>
         </div>
       </div>
     </div>
