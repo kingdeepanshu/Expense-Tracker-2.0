@@ -6,7 +6,7 @@ function FoodGraph() {
   const { width, height } = useWindowSize();
   const [expenses, setExpenses] = useState([{}]);
   useEffect(() =>{
-    fetch('/food').then(response => response.json()).then((data) => {
+    fetch('https://expense-tracker-2-0-one.vercel.app/food').then(response => response.json()).then((data) => {
       setExpenses(data);
     })
   })

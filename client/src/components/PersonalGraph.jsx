@@ -4,7 +4,7 @@ import { BarChart } from '@mui/x-charts';
 function PersonalGraph() {
     const [expenses, setExpenses] = useState([{}]);
     useEffect(() =>{
-      fetch('/personal').then(response => response.json()).then((data) => {
+      fetch('https://expense-tracker-2-0-one.vercel.app/personal').then(response => response.json()).then((data) => {
         setExpenses(data);
       })
     })

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 function ThisWeekGraph() {
     const [expenses, setExpenses] = useState([{}]);
     useEffect(() =>{
-      fetch('/week').then(response => response.json()).then((data) => {
+      fetch('https://expense-tracker-2-0-one.vercel.app/week').then(response => response.json()).then((data) => {
         setExpenses(data);
       })
     })

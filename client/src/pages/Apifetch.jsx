@@ -10,7 +10,7 @@ function Apifetch({link}) {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json(); // Use response.text() to handle plain text
+        return response.json();
       })
       .then(data => {
         setExpenses(data);

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
-// import MonthGraph from '../components/MonthGraph';
+import MonthGraph from '../components/MonthGraph';
 import FoodGraph from '../components/FoodGraph';
 import ThisWeekGraph from '../components/ThisWeekGraph';
 import { Link } from 'react-router-dom';
 import AddButton from '../components/AddButton';
+import NavbarMobile from '../components/NavbarMobile';
 
 function Home() {
     const [selection, SetSelection] = useState('Today');
@@ -80,11 +81,11 @@ function Home() {
     console.log(expenses);
 
   return (
-<body className="min-h-screen  w-full flex relative p-5 bg-indigo-600 m-0">
-        
+<div className="min-h-screen  w-full flex relative p-5 bg-indigo-600 m-0 sm:flex-col">
+        <NavbarMobile/>
         <Navbar/>
 
-        <div className="w-full p-8 bg-white rounded-2xl ">
+        <div className="w-full p-8 bg-white rounded-2xl">
             
             <Header onChange={handleSelection} defaultSelection="Today" />
             <div className="mt-8">
@@ -97,7 +98,7 @@ function Home() {
                             <h1 className="text-xl text-left font-bold">₹{totalcat(monthex)}</h1>
                         </div>
                         <div className='w-full flex justify-center items-center overflow-hidden'>
-                        {/* <MonthGraph/> */}
+                        <MonthGraph/>
                         </div>
                     </div>
                     <div className="w-60 h-60 mb-10 rounded-xl shadow-2xl shadow-indigo-600 p-7 flex flex-col justify-between bg-indigo-200 xl:w-72 xl:h-72 sm:w-full sm:h-full md:w-full md:h-full 2xl:w-80 2xl:h-80">
@@ -127,7 +128,7 @@ function Home() {
                     {expenses.map(expense => (
                         <Link to={`/${expense._id}`}>
                         <div className="flex p-1 px-5 w-4/6 my-2 justify-between rounded-xl bg-indigo-50 hover:bg-indigo-200 items-center sm:w-full">
-                        <div className="flex">
+                        <div className="flex" key={expense._id}>
                             <img src="https://www.qfc.com/content/v2/binary/image/bl/health/what-is-healthy-food/what-is-healthy-food--3616981_2022_dx_content_kh_whatishealthyfood_hro_mbl_640x364.jpg" alt="" className="w-16 h-16 rounded-full object-cover mr-6"/>
                             <div className="flex flex-col justify-center">
                                 <h1 className="text-2xl">{expense.description}</h1>
@@ -147,7 +148,7 @@ function Home() {
             </div>   
         </div>
         <AddButton/>
-    </body>
+    </div>
   )
 }
 

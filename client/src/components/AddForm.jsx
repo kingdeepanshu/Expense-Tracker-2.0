@@ -14,7 +14,7 @@ function AddForm() {
     const expense = { amount, category, date, description };
 
     try {
-      axios.post('/add', expense)
+      axios.post('https://expense-tracker-2-0-one.vercel.app/add', expense)
       setAdded(true)
     } catch (error) {
       console.error('Error adding expense:', error);

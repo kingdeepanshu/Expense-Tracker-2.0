@@ -5,15 +5,15 @@ import axios from 'axios';
 function MonthGraph() {
   const [expenses, setExpenses] = useState([{}]);
   useEffect(() =>{
-    axios.get('/month').then(response => {
+    axios.get('https://expense-tracker-2-0-one.vercel.app/month').then(response => {
       setExpenses(response.data);
     })
   })
 
-  const data = expenses.forEach(expense => expense.amount);
+  const data = expenses.map(expense => expense.amount);
 
 
-  const date = expenses.forEach(expense => (
+  const date = expenses.map(expense => (
     new Date(expense.date).getDate()
   ))
 

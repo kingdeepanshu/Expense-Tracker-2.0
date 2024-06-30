@@ -4,7 +4,7 @@ import { BarChart } from '@mui/x-charts';
 function TotalGraph() {
     const [expenses, setExpenses] = useState([{}]);
     useEffect(() =>{
-      fetch('/total').then(response => response.json()).then((data) => {
+      fetch('https://expense-tracker-2-0-one.vercel.app/total').then(response => response.json()).then((data) => {
         setExpenses(data);
       })
     })
