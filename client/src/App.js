@@ -17,7 +17,6 @@ function App() {
         <Route path="/activities" element={<Activities />} />
         <Route path="/add" element={<AddExpense />} />
         <Route path="/:id" element={<EditExpense />} />
-
       </Routes>
     </BrowserRouter>
   );
