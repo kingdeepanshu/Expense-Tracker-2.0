@@ -5,7 +5,7 @@ import NavbarMobile from '../components/NavbarMobile'
 
 function Activities() {
   return (
-<body className="min-h-screen w-full flex relative p-6 bg-indigo-600 m-0">
+<body className="min-h-screen w-full flex relative p-6 bg-indigo-600 m-0 sm:flex-col">
   <NavbarMobile/>
   <Navbar/>
 <div className="w-full p-8 bg-white rounded-2xl">

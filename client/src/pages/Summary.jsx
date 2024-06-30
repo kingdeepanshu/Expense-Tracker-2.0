@@ -101,7 +101,7 @@ function formatDate(date) {
 
 
   return (
-<body className="w-full flex relative p-5 bg-indigo-600 m-0 min-h-screen">
+<body className="w-full flex relative p-5 bg-indigo-600 m-0 min-h-screen sm:flex-col">
 <NavbarMobile/>
 <Navbar/>
 
