@@ -30,7 +30,7 @@ function EditForm() {
   const deleteSubmit = async(event) => {
     event.preventDefault();
     try{
-        axios.delete(`/${id}`);
+        axios.delete(`https://expense-tracker-2-0-one.vercel.app/${id}`);
         setAdded(true)
     }catch(err){
         console.log(err);
