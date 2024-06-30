@@ -10,7 +10,7 @@ function NavbarMobile() {
         <h1 className="text-lg my-3 text-left hover:font-bold bg-white px-2 rounded-sm"><Link to="/">DashBoard</Link></h1>
         <h1 className="text-lg my-3 text-left hover:font-bold bg-white px-2 rounded-sm"><Link to="/expenses">Expenses</Link></h1>
         <h1 className="text-lg my-3 text-left hover:font-bold bg-white px-2 rounded-sm"><Link to="/summary">Summary</Link></h1>
-        <h1 className="text-lg my-3 text-left hover:font-bold bg-white px-2 rounded-sm"><Link to="/activities">Activities</Link></h1>
+        {/* <h1 className="text-lg my-3 text-left hover:font-bold bg-white px-2 rounded-sm"><Link to="/activities">Activities</Link></h1> */}
       </menu>
     </div>
   )
