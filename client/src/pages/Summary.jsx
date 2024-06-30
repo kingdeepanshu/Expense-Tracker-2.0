@@ -22,13 +22,13 @@ let link = selection;
 
 useEffect(() =>{
     if(selection === 'This Week'){
-        link = '/week';
+        link = 'https://expense-tracker-2-0-one.vercel.app/week';
     }else if(selection === 'This Month'){
-        link = '/month';
+        link = 'https://expense-tracker-2-0-one.vercel.app/month';
     }else if(selection === 'Last Month'){
-        link = '/lastmonth';
+        link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
     }else{
-        link = '/today';
+        link = 'https://expense-tracker-2-0-one.vercel.app/today';
     }
     fetch(link).then(response => response.json()).then(data => {
         setExpenses(data);
@@ -36,46 +36,46 @@ useEffect(() =>{
 },[selection]);
 
   useEffect(() => {
-    fetch("/food").then(response => response.json()).then(data =>{
+    fetch("https://expense-tracker-2-0-one.vercel.app/food").then(response => response.json()).then(data =>{
         setFoodex(data);
     })
   },[]);
 
   useEffect(() => {
-    fetch("/flat").then(response => response.json()).then(data =>{
+    fetch("https://expense-tracker-2-0-one.vercel.app/flat").then(response => response.json()).then(data =>{
         setFlatex(data);
     })
   },[]);
 
   useEffect(() => {
-    fetch("/travel").then(response => response.json()).then(data =>{
+    fetch("https://expense-tracker-2-0-one.vercel.app/travel").then(response => response.json()).then(data =>{
         setTravelex(data);
     })
   },[]);
 
   useEffect(() => {
-    fetch("/grocery").then(response => response.json()).then(data =>{
+    fetch("https://expense-tracker-2-0-one.vercel.app/grocery").then(response => response.json()).then(data =>{
         setGroceryex(data);
     })
   },[]);
 
   useEffect(() => {
-    fetch("/personal").then(response => response.json()).then(data =>{
+    fetch("https://expense-tracker-2-0-one.vercel.app/personal").then(response => response.json()).then(data =>{
         setPersonalex(data);
     })
   },[]);
 
   useEffect(() => {
-    fetch("/total").then(response => response.json()).then(data =>{
+    fetch("https://expense-tracker-2-0-one.vercel.app/total").then(response => response.json()).then(data =>{
         setTotalex(data);
     })
   },[]);
 
 const totalcat = (cat) =>{
     let count = 0;
-    cat.map(ex => {
-        count = count + ex.amount;
-    })
+    cat.map(ex => (
+        count = count + ex.amount
+    ))
     return count
 }
 

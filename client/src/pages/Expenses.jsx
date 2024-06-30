@@ -18,15 +18,15 @@ let link = selection;
 
 useEffect(() =>{
     if(selection === 'This Week'){
-        link = '/week';
+        link = 'https://expense-tracker-2-0-one.vercel.app/week';
     }else if(selection === 'This Month'){
-        link = '/month';
+        link = 'https://expense-tracker-2-0-one.vercel.app/month';
     }else if(selection === 'Last Month'){
-        link = '/lastmonth';
+        link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
     }else if(selection === 'Total'){
-      link = '/total';
+      link = 'https://expense-tracker-2-0-one.vercel.app/total';
     }else{
-        link = '/today';
+        link = 'https://expense-tracker-2-0-one.vercel.app/today';
     }
     axios.get(link).then(response => setExpenses(response.data));
 },[selection]);

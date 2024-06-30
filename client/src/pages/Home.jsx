@@ -24,13 +24,13 @@ function Home() {
 
     useEffect(() =>{
         if(selection === 'This Week'){
-            link = '/week';
+            link = 'https://expense-tracker-2-0-one.vercel.app/week';
         }else if(selection === 'This Month'){
-            link = '/month';
+            link = 'https://expense-tracker-2-0-one.vercel.app/month';
         }else if(selection === 'Last Month'){
-            link = '/lastmonth';
+            link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
         }else{
-            link = '/today';
+            link = 'https://expense-tracker-2-0-one.vercel.app/today';
         }
         fetch(link).then(response => response.json()).then(data => {
             setExpenses(data);
@@ -38,28 +38,28 @@ function Home() {
     },[selection]);
 
     useEffect(() => {
-        fetch("/month").then(response => response.json()).then(data =>{
+        fetch("https://expense-tracker-2-0-one.vercel.app/month").then(response => response.json()).then(data =>{
             setMonthex(data);
         })
     },[]);
 
     useEffect(() => {
-        fetch("/week").then(response => response.json()).then(data =>{
+        fetch("https://expense-tracker-2-0-one.vercel.app/week").then(response => response.json()).then(data =>{
             setweekex(data);
         })
     },[]);
 
     useEffect(() => {
-        fetch("/food").then(response => response.json()).then(data =>{
+        fetch("https://expense-tracker-2-0-one.vercel.app/food").then(response => response.json()).then(data =>{
             setFoodex(data);
         })
     },[]);
 
     const totalcat = (cat) =>{
         let count = 0;
-        cat.map(ex => {
-            count = count + ex.amount;
-        })
+        cat.map(ex => (
+            count = count + ex.amount
+        ))
         return count
     }
 

@@ -14,7 +14,7 @@ function EditForm() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`/${id}`)
+    axios.get(`https://expense-tracker-2-0-one.vercel.app/${id}`)
       .then(response => {
         const expense = response.data;
         setAmount(expense.amount);
@@ -42,7 +42,7 @@ function EditForm() {
     const newexpense = { amount, category, date, description };
     console.log(newexpense);
     try {
-        axios.put(`/${id}`, newexpense)
+        axios.put(`https://expense-tracker-2-0-one.vercel.app/${id}`, newexpense)
         setAdded(true)
     } catch (error) {
       console.error('Error adding expense:', error);
