@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5002/api/login", { email, password });
+      const res = await axios.post("https://expense-tracker-2-0-one.vercel.app/api/login", { email, password });
       localStorage.setItem("token", res.data.data);
       setAdded(true)// Redirect to home page
     } catch (err) {

@@ -11,7 +11,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5002/api/signin", { username, email, password });
+      await axios.post("https://expense-tracker-2-0-one.vercel.app/api/signin", { username, email, password });
       navigate("/login");
     } catch (err) {
       console.error(err);

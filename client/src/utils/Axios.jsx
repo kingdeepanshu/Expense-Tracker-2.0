@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5002', // Your backend URL
+    baseURL: 'https://expense-tracker-2-0-one.vercel.app', // Your backend URL
 });
 
 instance.interceptors.request.use(
