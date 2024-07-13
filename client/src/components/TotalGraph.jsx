@@ -1,12 +1,13 @@
 import { BarChart } from '@mui/x-charts'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import axios from '../utils/Axios';
+
 
 
 function MonthGraph() {
   const [expenses, setExpenses] = useState([{}]);
   useEffect(() =>{
-    axios.get('https://expense-tracker-2-0-one.vercel.app/total').then(response => {
+    axios.get('/total').then(response => {
       setExpenses(response.data);
     })
   })

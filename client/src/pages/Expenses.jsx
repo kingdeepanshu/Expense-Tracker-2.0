@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import CategoryChart from '../components/CategoryChart'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/Axios';
 import AddButton from '../components/AddButton';
 import NavbarMobile from '../components/NavbarMobile';
 
@@ -20,15 +20,15 @@ let link = selection;
 
 useEffect(() =>{
     if(selection === 'This Week'){
-        link = 'https://expense-tracker-2-0-one.vercel.app/week';
+        link = '/week';
     }else if(selection === 'This Month'){
-        link = 'https://expense-tracker-2-0-one.vercel.app/month';
+        link = '/month';
     }else if(selection === 'Last Month'){
-        link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
+        link = '/lastmonth';
     }else if(selection === 'Total'){
-      link = 'https://expense-tracker-2-0-one.vercel.app/total';
+      link = '/total';
     }else{
-        link = 'https://expense-tracker-2-0-one.vercel.app/today';
+        link = '/today';
     }
     axios.get(link).then(response => setExpenses(response.data));
 },[selection]);

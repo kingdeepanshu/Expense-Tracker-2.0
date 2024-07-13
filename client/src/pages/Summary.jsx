@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import AddButton from '../components/AddButton';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TotalGraph from '../components/TotalGraph';
 import FoodGraph from '../components/FoodGraph';
 import TravelGraph from '../components/TravelGraph';
 import PersonalGraph from '../components/PersonalGraph';
 import GroceryGraph from '../components/GroceryGraph';
+import axios from '../utils/Axios';
 import FlatGraph from '../components/FlatGraph';
 import NavbarMobile from '../components/NavbarMobile';
 
@@ -20,6 +21,8 @@ function Summary() {
   const [personalex, setPersonalex] = useState([{}]);
   const [flatex, setFlatex] = useState([{}]);
   const [Totalex, setTotalex] = useState([{}]);
+  const navigate = useNavigate();
+
 
   const handleSelection = (value) =>{
     SetSelection(value);
@@ -27,64 +30,137 @@ function Summary() {
 
 let link = selection;
 
-useEffect(() =>{
-    if(selection === 'This Week'){
-        link = 'https://expense-tracker-2-0-one.vercel.app/week';
-    }else if(selection === 'This Month'){
-        link = 'https://expense-tracker-2-0-one.vercel.app/month';
-    }else if(selection === 'Last Month'){
-        link = 'https://expense-tracker-2-0-one.vercel.app/lastmonth';
-    }else{
-        link = 'https://expense-tracker-2-0-one.vercel.app/today';
-    }
-    fetch(link).then(response => response.json()).then(data => {
-        setExpenses(data);
-    })
-},[selection]);
+useEffect(() => {
+  const fetchData = async () => {
+      let link;
+      if (selection === 'This Week') {
+          link = '/week';
+      } else if (selection === 'This Month') {
+          link = '/month';
+      } else if (selection === 'Last Month') {
+          link = '/lastmonth';
+      } else if (selection === 'Total') {
+          link = '/total';
+      } else {
+          link = '/today';
+      }
 
-  useEffect(() => {
-    fetch("https://expense-tracker-2-0-one.vercel.app/food").then(response => response.json()).then(data =>{
-        setFoodex(data);
-    })
-  },[]);
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get(link, {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setExpenses(data);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+          if (error.response && error.response.status === 401) {
+              navigate('/login');
+          }
+      }
+  };
 
-  useEffect(() => {
-    fetch("https://expense-tracker-2-0-one.vercel.app/flat").then(response => response.json()).then(data =>{
-        setFlatex(data);
-    })
-  },[]);
+  fetchData();
+}, [selection, navigate]);
 
-  useEffect(() => {
-    fetch("https://expense-tracker-2-0-one.vercel.app/travel").then(response => response.json()).then(data =>{
-        setTravelex(data);
-    })
-  },[]);
+useEffect(() => {
+  const fetchFoodex = async () => {
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get('/food', {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setFoodex(data);
+      } catch (error) {
+          console.error('Error fetching food expenses:', error);
+      }
+  };
 
-  useEffect(() => {
-    fetch("https://expense-tracker-2-0-one.vercel.app/grocery").then(response => response.json()).then(data =>{
-        setGroceryex(data);
-    })
-  },[]);
+  fetchFoodex();
+}, []);
 
-  useEffect(() => {
-    fetch("https://expense-tracker-2-0-one.vercel.app/personal").then(response => response.json()).then(data =>{
-        setPersonalex(data);
-    })
-  },[]);
+useEffect(() => {
+  const fetchFoodex = async () => {
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get('/flat', {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setFlatex(data);
+      } catch (error) {
+          console.error('Error fetching food expenses:', error);
+      }
+  };
 
-  useEffect(() => {
-    fetch("https://expense-tracker-2-0-one.vercel.app/total").then(response => response.json()).then(data =>{
-        setTotalex(data);
-    })
-  },[]);
+  fetchFoodex();
+}, []);
 
-const totalcat = (cat) =>{
-    let count = 0;
-    cat.map(ex => (
-        count = count + ex.amount
-    ))
-    return count
-}
+useEffect(() => {
+  const fetchFoodex = async () => {
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get('/travel', {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setTravelex(data);
+      } catch (error) {
+          console.error('Error fetching food expenses:', error);
+      }
+  };
+
+  fetchFoodex();
+}, []);
+
+useEffect(() => {
+  const fetchFoodex = async () => {
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get('/grocery', {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setGroceryex(data);
+      } catch (error) {
+          console.error('Error fetching food expenses:', error);
+      }
+  };
+
+  fetchFoodex();
+}, []);
+
+useEffect(() => {
+  const fetchFoodex = async () => {
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get('/personal', {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setPersonalex(data);
+      } catch (error) {
+          console.error('Error fetching food expenses:', error);
+      }
+  };
+
+  fetchFoodex();
+}, []);
+
+useEffect(() => {
+  const fetchFoodex = async () => {
+      try {
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get('/total', {
+              headers: { Authorization: `Bearer ${token}` }
+          });
+          setTotalex(data);
+      } catch (error) {
+          console.error('Error fetching food expenses:', error);
+      }
+  };
+
+  fetchFoodex();
+}, []);
+
+const totalcat = (cat) => {
+  return cat.reduce((count, ex) => count + ex.amount, 0);
+};
 
 function formatDate(date) {
   if (!date) return 'Date Not Available';
@@ -116,7 +192,7 @@ function formatDate(date) {
           <h1 className="text-2xl text-left text-gray-600">Total</h1>
           <h1 className="text-xl text-left font-bold">₹{totalcat(Totalex)}</h1>
         </div>
-        <div className="border-2 w-full">
+        <div className=" w-full">
           <TotalGraph/>
         </div>
       </div>
@@ -127,7 +203,7 @@ function formatDate(date) {
           <h1 className="text-2xl text-left text-gray-600">Food</h1>
           <h1 className="text-xl text-left font-bold">₹{totalcat(foodex)}</h1>
         </div>
-        <div className="border-2 w-full">
+        <div className="w-full">
           <FoodGraph/>
         </div>
       </div>
@@ -137,7 +213,7 @@ function formatDate(date) {
           <h1 className="text-2xl text-left text-gray-600">Travel</h1>
           <h1 className="text-xl text-left font-bold">₹{totalcat(travelex)}</h1>
         </div>
-        <div className="border-2 w-full">
+        <div className="w-full">
           <TravelGraph/>
         </div>
       </div>
@@ -146,7 +222,7 @@ function formatDate(date) {
           <h1 className="text-2xl text-left text-gray-600">Personal</h1>
           <h1 className="text-xl text-left font-bold">₹{totalcat(personalex)}</h1>
         </div>
-        <div className="border-2 w-full">
+        <div className="w-full">
           <PersonalGraph/>
         </div>
       </div>
@@ -156,7 +232,7 @@ function formatDate(date) {
           <h1 className="text-2xl text-left text-gray-600">Grocery</h1>
           <h1 className="text-xl text-left font-bold">₹{totalcat(groceryex)}</h1>
         </div>
-        <div className="border-2 w-full">
+        <div className="w-full">
           <GroceryGraph/>
         </div>
       </div>
@@ -166,7 +242,7 @@ function formatDate(date) {
           <h1 className="text-2xl text-left text-gray-600">Flat</h1>
           <h1 className="text-xl text-left font-bold">₹{totalcat(flatex)}</h1>
         </div>
-        <div className="border-2 w-full">
+        <div className="w-full">
           <FlatGraph/>
         </div>
       </div>

@@ -2,6 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Navbar() {
+
+    const logout = () => {
+        localStorage.removeItem('token'); // Remove token from localStorage
+        window.location.href = '/login'; // Redirect to login page
+    };
+
   return (
     <div className="w-3/12 border-none h-screen rounded-r-3xl p-10 bg-indigo-600 text-white sticky top-0 overflow-hidden sm:hidden md:w-4/12">
             <h1 className="mb-16 text-4xl font-black xl:text-5xl md:text-4xl ">Expense</h1>
@@ -16,7 +22,7 @@ function Navbar() {
     
                 <menu className="mb-60">
                     <h1 className="text-xl my-3 text-left hover:font-bold">settings</h1>
-                    <h1 className="text-xl my-3 text-left hover:font-bold">logout</h1>
+                    <h1 className="text-xl my-3 text-left hover:font-bold cursor-pointer" onClick={logout}>logout</h1>
                 </menu>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/Axios';
 import { useParams } from 'react-router-dom';
 
 function EditForm() {
@@ -14,7 +14,7 @@ function EditForm() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`https://expense-tracker-2-0-one.vercel.app/${id}`)
+    axios.get(`/${id}`)
       .then(response => {
         const expense = response.data;
         setAmount(expense.amount);
@@ -30,7 +30,7 @@ function EditForm() {
   const deleteSubmit = async(event) => {
     event.preventDefault();
     try{
-        axios.delete(`https://expense-tracker-2-0-one.vercel.app/${id}`);
+        axios.delete(`/${id}`);
         setAdded(true)
     }catch(err){
         console.log(err);
@@ -42,7 +42,7 @@ function EditForm() {
     const newexpense = { amount, category, date, description };
     console.log(newexpense);
     try {
-        axios.put(`https://expense-tracker-2-0-one.vercel.app/${id}`, newexpense)
+        axios.put(`/${id}`, newexpense)
         setAdded(true)
     } catch (error) {
       console.error('Error adding expense:', error);

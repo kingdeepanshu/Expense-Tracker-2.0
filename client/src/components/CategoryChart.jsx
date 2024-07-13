@@ -1,12 +1,12 @@
 import { PieChart } from '@mui/x-charts'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import axios from '../utils/Axios';
 
 
 function MonthGraph() {
   const [expenses, setExpenses] = useState([{}]);
   useEffect(() =>{
-    axios.get('https://expense-tracker-2-0-one.vercel.app/month').then(response => {
+    axios.get('/month').then(response => {
       setExpenses(response.data);
     })
   })
@@ -46,12 +46,12 @@ function MonthGraph() {
     outangle = 70;
     inangle = 10;
   }else if(window.screen.width < 1700 && window.screen.width > 1220){
-    width = 450;
+    width = 600;
     height = 350;
     outangle = 150;
     inangle = 40;
   }else{
-    width = 450;
+    width = 600;
     height = 350;
     outangle = 150;
     inangle = 40;
